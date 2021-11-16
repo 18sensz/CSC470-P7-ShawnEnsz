@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AppUser.cs" />
     <Compile Include="FakeAppUserRepository.cs" />
+    <Compile Include="FakeIssueRepository.cs" />
     <Compile Include="FakePreferenceRepository.cs" />
     <Compile Include="FakeProjectRepository.cs" />
     <Compile Include="IAppUserRepository.cs" />

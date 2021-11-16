@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace P5
 {
-    interface IIssueRepository
+    public interface IIssueRepository
     {
         string Add(Issue issue);
-        List<string> GetAll(int projectId);
+        List<Issue> GetAll(int projectId);
         bool Remove(Issue issue);
         string Modify(Issue issue);
         int GetTotalNumberOfIssues(int projectId);
