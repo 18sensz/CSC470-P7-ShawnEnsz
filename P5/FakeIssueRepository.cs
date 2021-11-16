@@ -15,11 +15,32 @@ namespace P5
         public string EMPTY_DISCOVERER_ERROR = "A Discoverer is required.";
         List<Issue> issues;
 
+        public FakeIssueRepository()
+        {
+            Issue tempIssue = new Issue() {
+                Id = 1,
+                ProjectId = 1,
+                Title = "Starting Issue",
+                DiscoveryDate = DateTime.Now,
+                Discoverer = "Shawn Ensz",
+                InitialDescription = "This is a test starting issue.",
+                Component = "Test Component",
+                IssueStatusId = 1,
+            };
+
+            var result = Add(tempIssue);
+        }
+
         public string Add(Issue issue)
         {
             //Error checking
-            issues.Add(issue);
-            return NO_ERROR;
+            var error = ValidateIssue(issue);
+            if (error == NO_ERROR)
+            {
+                issues.Add(issue);
+                return error;
+            }
+            return error;
         }
         public List<Issue> GetAll(int projectId)
         {
