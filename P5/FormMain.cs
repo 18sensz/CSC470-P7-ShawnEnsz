@@ -5,6 +5,7 @@ namespace P5
     public partial class FormMain : Form
     {
         private AppUser _CurrentAppUser = new AppUser();
+
         public FormMain()
         {
             InitializeComponent();
@@ -82,6 +83,13 @@ namespace P5
         private void preferencesRemoveProjectToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             FormRemoveProject form = new FormRemoveProject(_CurrentAppUser);
+            form.ShowDialog();
+            form.Dispose();
+        }
+
+        private void issuesDashboardToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FormDashboardIssue form = new FormDashboardIssue(_CurrentAppUser);
             form.ShowDialog();
             form.Dispose();
         }

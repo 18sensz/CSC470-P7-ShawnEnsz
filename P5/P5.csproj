@@ -65,6 +65,12 @@
     <Compile Include="FakeIssueStatusRepository.cs" />
     <Compile Include="FakePreferenceRepository.cs" />
     <Compile Include="FakeProjectRepository.cs" />
+    <Compile Include="FormDashboardIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDashboardIssue.Designer.cs">
+      <DependentUpon>FormDashboardIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="IAppUserRepository.cs" />
     <Compile Include="IIssueRepository.cs" />
     <Compile Include="IIssueStatusRepository.cs" />
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateProject.resx">
       <DependentUpon>FormCreateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDashboardIssue.resx">
+      <DependentUpon>FormDashboardIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormModifyProject.resx">
       <DependentUpon>FormModifyProject.cs</DependentUpon>

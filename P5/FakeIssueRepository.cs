@@ -13,7 +13,7 @@ namespace P5
         public string EMPTY_DISCOVERY_DATETIME_ERROR = "Must select a Discovery Date/Time.";
         public string FUTURE_DISCOVERY_DATETIME_ERROR = "Issues cannot be from the future.";
         public string EMPTY_DISCOVERER_ERROR = "A Discoverer is required.";
-        List<Issue> issues;
+        List<Issue> issues = new List<Issue>();
 
         public FakeIssueRepository()
         {
@@ -27,8 +27,46 @@ namespace P5
                 Component = "Test Component",
                 IssueStatusId = 1,
             };
+            issues.Add(tempIssue);
 
-            var result = Add(tempIssue);
+            tempIssue = new Issue()
+            {
+                Id = 2,
+                ProjectId = 1,
+                Title = "New Issue",
+                DiscoveryDate = DateTime.Now,
+                Discoverer = "Shawn Ensz",
+                InitialDescription = "This is a test starting issue.",
+                Component = "Test Component",
+                IssueStatusId = 1,
+            };
+            issues.Add(tempIssue);
+
+            tempIssue = new Issue()
+            {
+                Id = 3,
+                ProjectId = 1,
+                Title = "boop Issue",
+                DiscoveryDate = DateTime.Now,
+                Discoverer = "Dave Bishop",
+                InitialDescription = "This is a test starting issue.",
+                Component = "Test Component",
+                IssueStatusId = 1,
+            };
+            issues.Add(tempIssue);
+
+            tempIssue = new Issue()
+            {
+                Id = 1,
+                ProjectId = 2,
+                Title = "new porj Issue",
+                DiscoveryDate = DateTime.Now,
+                Discoverer = "Dave Bishop",
+                InitialDescription = "This is a test starting issue.",
+                Component = "Test Component",
+                IssueStatusId = 1,
+            };
+            issues.Add(tempIssue);
         }
 
         public string Add(Issue issue)
@@ -99,11 +137,29 @@ namespace P5
         }
         public List<string> GetIssuesByMonth(int projectId)
         {
-            return null;
+            List<string> displayList = new List<string>();
+            List<Issue> projectIssues = GetAll(projectId);
+            string tmpString;
+
+            foreach(Issue issue in projectIssues)
+            {
+                tmpString = $"{issue.DiscoveryDate.Year} - {issue.DiscoveryDate.Month}: {issue.Id}";
+                displayList.Add(tmpString);
+            }
+            return displayList;
         }
         public List<string> GetIssuesByDiscoverer(int projectId)
         {
-            return null;
+            List<string> displayList = new List<string>();
+            List<Issue> projectIssues = GetAll(projectId);
+            string tmpString;
+
+            foreach (Issue issue in projectIssues)
+            {
+                tmpString = $"{issue.Discoverer}: {issue.Id}";
+                displayList.Add(tmpString);
+            }
+            return displayList;
         }
         public Issue GetIssueById(int id)
         {
