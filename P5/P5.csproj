@@ -71,6 +71,12 @@
     <Compile Include="FormDashboardIssue.Designer.cs">
       <DependentUpon>FormDashboardIssue.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormModifyIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModifyIssue.Designer.cs">
+      <DependentUpon>FormModifyIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRecordIssue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDashboardIssue.resx">
       <DependentUpon>FormDashboardIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModifyIssue.resx">
+      <DependentUpon>FormModifyIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormModifyProject.resx">
       <DependentUpon>FormModifyProject.cs</DependentUpon>

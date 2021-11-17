@@ -38,10 +38,10 @@ namespace P5
 
         private void selectIssueButton_Click(object sender, EventArgs e)
         {
-            var row = this.dataGridView1.SelectedRows[0];
-            selectedIssueId = (int)row.Cells["Id"].Value;
-            if(selectedIssueId != -1)
+            if(this.dataGridView1.SelectedRows.Count > 0)
             {
+                var row = this.dataGridView1.SelectedRows[0];
+                selectedIssueId = (int)row.Cells["Id"].Value;
                 this.DialogResult = DialogResult.OK;
             }
             else

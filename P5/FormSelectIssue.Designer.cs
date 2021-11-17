@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fakeIssueRepositoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.issueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.selectIssueButton = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
+            this.fakeIssueRepositoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.issueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fakeIssueRepositoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueBindingSource)).BeginInit();
@@ -58,17 +58,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(831, 289);
             this.dataGridView1.TabIndex = 0;
             // 
-            // fakeIssueRepositoryBindingSource
-            // 
-            this.fakeIssueRepositoryBindingSource.DataSource = typeof(P5.FakeIssueRepository);
-            // 
-            // issueBindingSource
-            // 
-            this.issueBindingSource.DataSource = typeof(P5.Issue);
-            // 
             // selectIssueButton
             // 
-            this.selectIssueButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.selectIssueButton.Location = new System.Drawing.Point(756, 355);
             this.selectIssueButton.Name = "selectIssueButton";
             this.selectIssueButton.Size = new System.Drawing.Size(111, 23);
@@ -86,6 +77,14 @@
             this.Cancel.TabIndex = 2;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            // 
+            // fakeIssueRepositoryBindingSource
+            // 
+            this.fakeIssueRepositoryBindingSource.DataSource = typeof(P5.FakeIssueRepository);
+            // 
+            // issueBindingSource
+            // 
+            this.issueBindingSource.DataSource = typeof(P5.Issue);
             // 
             // FormSelectIssue
             // 

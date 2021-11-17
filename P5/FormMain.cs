@@ -105,7 +105,11 @@ namespace P5
         {
             FormSelectIssue form = new FormSelectIssue(_CurrentAppUser);
             form.ShowDialog();
+            var selectedIssue = form.selectedIssueId;
             form.Dispose();
+            FormModifyIssue modifyForm = new FormModifyIssue(selectedIssue);
+            modifyForm.ShowDialog();
+            modifyForm.Dispose();
         }
     }
 }
