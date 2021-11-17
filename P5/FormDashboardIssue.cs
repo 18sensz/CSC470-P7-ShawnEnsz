@@ -28,8 +28,19 @@ namespace P5
             FakeIssueRepository fakeIssueRepository = new FakeIssueRepository();
             selectedProjectId = Int32.Parse(fakePreferenceRepository.GetPreference(currentUser.UserName, FakePreferenceRepository.PREFERENCE_PROJECT_ID));
             this.numOfIssuesDisplayLabel.Text = fakeIssueRepository.GetTotalNumberOfIssues(selectedProjectId).ToString();
-            this.issueByMonthListBox.DataSource = fakeIssueRepository.GetIssuesByMonth(selectedProjectId);
-            this.issueByDiscovererListBox.DataSource = fakeIssueRepository.GetIssuesByDiscoverer(selectedProjectId);
+
+            this.issueByMonthListBox.Items.Clear();
+            this.issueByDiscovererListBox.Items.Clear();
+            var tmp = fakeIssueRepository.GetIssuesByMonth(selectedProjectId);
+            foreach (string line in tmp)
+            {
+                this.issueByMonthListBox.Items.Add(line);
+            }
+            tmp = fakeIssueRepository.GetIssuesByDiscoverer(selectedProjectId);
+            foreach (string line in tmp)
+            {
+                this.issueByDiscovererListBox.Items.Add(line);
+            }
         }
     }
 }

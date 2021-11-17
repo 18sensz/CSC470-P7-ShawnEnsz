@@ -13,60 +13,65 @@ namespace P5
         public string EMPTY_DISCOVERY_DATETIME_ERROR = "Must select a Discovery Date/Time.";
         public string FUTURE_DISCOVERY_DATETIME_ERROR = "Issues cannot be from the future.";
         public string EMPTY_DISCOVERER_ERROR = "A Discoverer is required.";
-        List<Issue> issues = new List<Issue>();
+        private static List<Issue> issues = new List<Issue>();
 
         public FakeIssueRepository()
         {
-            Issue tempIssue = new Issue() {
-                Id = 1,
-                ProjectId = 1,
-                Title = "Starting Issue",
-                DiscoveryDate = DateTime.Now,
-                Discoverer = "Shawn Ensz",
-                InitialDescription = "This is a test starting issue.",
-                Component = "Test Component",
-                IssueStatusId = 1,
-            };
-            issues.Add(tempIssue);
-
-            tempIssue = new Issue()
+            if(issues.Count < 1)
             {
-                Id = 2,
-                ProjectId = 1,
-                Title = "New Issue",
-                DiscoveryDate = DateTime.Now,
-                Discoverer = "Shawn Ensz",
-                InitialDescription = "This is a test starting issue.",
-                Component = "Test Component",
-                IssueStatusId = 1,
-            };
-            issues.Add(tempIssue);
+                Issue tempIssue = new Issue()
+                {
+                    Id = 1,
+                    ProjectId = 1,
+                    Title = "Starting Issue",
+                    DiscoveryDate = DateTime.Now,
+                    Discoverer = "Shawn Ensz",
+                    InitialDescription = "This is a test starting issue.",
+                    Component = "Test Component",
+                    IssueStatusId = 1,
+                };
+                issues.Add(tempIssue);
 
-            tempIssue = new Issue()
-            {
-                Id = 3,
-                ProjectId = 1,
-                Title = "boop Issue",
-                DiscoveryDate = DateTime.Now,
-                Discoverer = "Dave Bishop",
-                InitialDescription = "This is a test starting issue.",
-                Component = "Test Component",
-                IssueStatusId = 1,
-            };
-            issues.Add(tempIssue);
+                tempIssue = new Issue()
+                {
+                    Id = 2,
+                    ProjectId = 1,
+                    Title = "New Issue",
+                    DiscoveryDate = DateTime.Now,
+                    Discoverer = "Shawn Ensz",
+                    InitialDescription = "This is a test starting issue.",
+                    Component = "Test Component",
+                    IssueStatusId = 1,
+                };
+                issues.Add(tempIssue);
 
-            tempIssue = new Issue()
-            {
-                Id = 1,
-                ProjectId = 2,
-                Title = "new porj Issue",
-                DiscoveryDate = DateTime.Now,
-                Discoverer = "Dave Bishop",
-                InitialDescription = "This is a test starting issue.",
-                Component = "Test Component",
-                IssueStatusId = 1,
-            };
-            issues.Add(tempIssue);
+                tempIssue = new Issue()
+                {
+                    Id = 3,
+                    ProjectId = 1,
+                    Title = "boop Issue",
+                    DiscoveryDate = DateTime.Now,
+                    Discoverer = "Dave Bishop",
+                    InitialDescription = "This is a test starting issue.",
+                    Component = "Test Component",
+                    IssueStatusId = 1,
+                };
+                issues.Add(tempIssue);
+
+                tempIssue = new Issue()
+                {
+                    Id = 1,
+                    ProjectId = 2,
+                    Title = "new porj Issue",
+                    DiscoveryDate = DateTime.Now,
+                    Discoverer = "Dave Bishop",
+                    InitialDescription = "This is a test starting issue.",
+                    Component = "Test Component",
+                    IssueStatusId = 1,
+                };
+                issues.Add(tempIssue);
+            }
+            
         }
 
         public string Add(Issue issue)
@@ -179,7 +184,7 @@ namespace P5
         {
             if (string.IsNullOrEmpty(issue.Title))
                 return EMPTY_TITLE_ERROR;
-            if (issue.DiscoveryDate != null)
+            if (issue.DiscoveryDate == null)
                 return EMPTY_DISCOVERY_DATETIME_ERROR;
             if (issue.DiscoveryDate > DateTime.Now)
                 return FUTURE_DISCOVERY_DATETIME_ERROR;
