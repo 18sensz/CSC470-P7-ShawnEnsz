@@ -8,13 +8,13 @@ namespace P5
 {
     public class Issue
     {
-        public int Id;
+        public int Id { get; set; }
+        public string Title { get; set; }
         public int ProjectId;
-        public string Title;
-        public DateTime DiscoveryDate;
-        public string Discoverer;
-        public string InitialDescription;
-        public string Component;
-        public int IssueStatusId;
+        public DateTime DiscoveryDate { get; set; }
+        public string Discoverer { get; set; }
+        public string InitialDescription { get; set; }
+        public string Component { get; set; }
+        public int IssueStatusId { get; set; }
     }
 }
