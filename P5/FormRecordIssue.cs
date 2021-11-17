@@ -58,10 +58,13 @@ namespace P5
             if(result == fakeIssueRepository.NO_ERROR)
             {
                 //Message box
+                MessageBox.Show("Successfully Recorded issue!", "Success!");
             }
             else
             {
                 //failed message box
+                MessageBox.Show(result, "ERROR!");
+
             }
         }
     }

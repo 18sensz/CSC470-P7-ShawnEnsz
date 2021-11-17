@@ -58,12 +58,14 @@
             // 
             // createIssueButton
             // 
+            this.createIssueButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.createIssueButton.Location = new System.Drawing.Point(416, 510);
             this.createIssueButton.Name = "createIssueButton";
             this.createIssueButton.Size = new System.Drawing.Size(75, 23);
             this.createIssueButton.TabIndex = 30;
             this.createIssueButton.Text = "Create Issue";
             this.createIssueButton.UseVisualStyleBackColor = true;
+            this.createIssueButton.Click += new System.EventHandler(this.createIssueButton_Click);
             // 
             // statusDropdown
             // 

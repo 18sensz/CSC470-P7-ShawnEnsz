@@ -60,7 +60,7 @@ namespace P5
 
                 tempIssue = new Issue()
                 {
-                    Id = 1,
+                    Id = 4,
                     ProjectId = 2,
                     Title = "new porj Issue",
                     DiscoveryDate = DateTime.Now,
@@ -112,11 +112,10 @@ namespace P5
         }
         public string Modify(Issue issue)
         {
-
-            if (ValidateIssue(issue) != NO_ERROR)
+            var indexToModify = issues.FindIndex(r => r.Id == issue.Id);
+            if (ValidateIssue(issue) != NO_ERROR && (issue.Title != issues[indexToModify].Title))
                 return ValidateIssue(issue);
            
-            var indexToModify = issues.FindIndex(r => r.Id == issue.Id);
             if (indexToModify != -1)
             {
                 issues[indexToModify] = issue;

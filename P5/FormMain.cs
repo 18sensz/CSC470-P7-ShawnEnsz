@@ -5,6 +5,7 @@ namespace P5
     public partial class FormMain : Form
     {
         private AppUser _CurrentAppUser = new AppUser();
+        private FakeIssueRepository _fakeIssueRepository = new FakeIssueRepository();
 
         public FormMain()
         {
@@ -107,9 +108,37 @@ namespace P5
             form.ShowDialog();
             var selectedIssue = form.selectedIssueId;
             form.Dispose();
-            FormModifyIssue modifyForm = new FormModifyIssue(selectedIssue);
-            modifyForm.ShowDialog();
-            modifyForm.Dispose();
+
+            if (form.DialogResult == DialogResult.OK)
+            {
+                FormModifyIssue modifyForm = new FormModifyIssue(selectedIssue);
+                modifyForm.ShowDialog();
+                modifyForm.Dispose();
+                selectedIssue = -1;
+            }
+        }
+
+        private void issuesRemoveToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FormSelectIssue form = new FormSelectIssue(_CurrentAppUser);
+            form.ShowDialog();
+            var selectedIssue = form.selectedIssueId;
+            if(form.DialogResult == DialogResult.OK)
+            {
+                DialogResult mbResult = MessageBox.Show($"Are you sure you want to remove: {_fakeIssueRepository.GetIssueById(selectedIssue).Title}","Confirmation", MessageBoxButtons.YesNo);
+                if(mbResult == DialogResult.Yes)
+                {
+                    //Remove
+                    _fakeIssueRepository.Remove(_fakeIssueRepository.GetIssueById(selectedIssue));
+                }
+                else
+                {
+                    MessageBox.Show("Remove canceled!", "Attention");
+                }
+            }
+
+            form.Dispose();
+            selectedIssue = -1;
         }
     }
 }
