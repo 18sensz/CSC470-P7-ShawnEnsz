@@ -30,7 +30,7 @@ namespace P5
             selectedProjectId = Int32.Parse(fakePreferenceRepository.GetPreference(currentUser.UserName, FakePreferenceRepository.PREFERENCE_PROJECT_ID));
 
             //Set id textbox
-            var nextId = fakeIssueRepository.GetTotalNumberOfIssues(selectedProjectId);
+            var nextId = fakeIssueRepository.GetNextId();
             this.idTextbox.Text = (++nextId).ToString();
 
             var statuses = fakeIssueStatusRepository.GetAll();

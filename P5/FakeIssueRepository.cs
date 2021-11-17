@@ -206,5 +206,11 @@ namespace P5
             }
             return false;
         }
+
+        public int GetNextId()
+        {
+            var num = issues.Count;
+            return num++;
+        }
     }
 }
