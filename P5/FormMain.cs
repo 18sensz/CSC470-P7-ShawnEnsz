@@ -140,5 +140,11 @@ namespace P5
             form.Dispose();
             selectedIssue = -1;
         }
+
+        //Feature Create
+        private void createToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
