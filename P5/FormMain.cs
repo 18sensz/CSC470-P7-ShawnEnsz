@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace P5
 {
@@ -146,6 +147,66 @@ namespace P5
         {
             FormCreateFeature form = new FormCreateFeature(_CurrentAppUser);
             form.ShowDialog();
+            form.Dispose();
+        }
+
+        //Feature Modify
+        private void modifyToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            FormSelectFeature form = new FormSelectFeature(_CurrentAppUser);
+            form.ShowDialog();
+            var selectedFeatureId = form.selectedFeatureId;
+
+            if(form.DialogResult == DialogResult.OK)
+            {
+                FormModifyFeature form2 = new FormModifyFeature(_CurrentAppUser, selectedFeatureId);
+                form2.ShowDialog();
+                form2.Dispose();
+            }
+            form.Dispose();
+
+        }
+
+        //Remove Feature
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FakeRequirementRepository fakeRequirementRepository = new FakeRequirementRepository();
+            FakeFeatureRepository fakeFeatureRepository = new FakeFeatureRepository();
+            FormSelectFeature form = new FormSelectFeature(_CurrentAppUser);
+            FakePreferenceRepository fakePreferenceRepository = new FakePreferenceRepository();
+            var selectedProjectId = Int32.Parse(fakePreferenceRepository.GetPreference(_CurrentAppUser.UserName, FakePreferenceRepository.PREFERENCE_PROJECT_ID));
+            form.ShowDialog();
+            var selectedFeatureId = form.selectedFeatureId;
+
+            if (form.DialogResult == DialogResult.OK)
+            {
+                var result = MessageBox.Show($"Are you sure you want to remove: {fakeFeatureRepository.GetFeatureById(selectedProjectId, selectedFeatureId).Title}?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    if (fakeRequirementRepository.CountByFeatureId(selectedFeatureId) > 0)
+                    {
+                        var secondResult = MessageBox.Show($"There are one or more requirements associated with this feature. These requirements will be destroyed if you remove this feature. Are you sure you want to remove: {fakeFeatureRepository.GetFeatureById(selectedProjectId, selectedFeatureId).Title}", "Confirmation", MessageBoxButtons.YesNo);
+                        if (secondResult == DialogResult.Yes)
+                        {
+                            fakeRequirementRepository.RemoveByFeatureId(selectedFeatureId);
+                            fakeFeatureRepository.Remove(fakeFeatureRepository.GetFeatureById(selectedProjectId, selectedFeatureId));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Remove canceled!", "Attention");
+                        }
+                    }
+                    else
+                    {
+                        fakeRequirementRepository.RemoveByFeatureId(selectedFeatureId);
+                        fakeFeatureRepository.Remove(fakeFeatureRepository.GetFeatureById(selectedProjectId, selectedFeatureId));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Remove canceled!", "Attention");
+                }
+            }
             form.Dispose();
         }
     }

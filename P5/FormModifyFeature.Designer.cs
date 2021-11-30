@@ -1,6 +1,6 @@
 ﻿namespace P5
 {
-    partial class FormCreateFeature
+    partial class FormModifyFeature
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.featureTitleLabel = new System.Windows.Forms.Label();
             this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.createFeatureButton = new System.Windows.Forms.Button();
+            this.modifyFeatureButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -50,15 +50,15 @@
             this.titleTextBox.Size = new System.Drawing.Size(428, 20);
             this.titleTextBox.TabIndex = 1;
             // 
-            // createFeatureButton
+            // modifyFeatureButton
             // 
-            this.createFeatureButton.Location = new System.Drawing.Point(403, 118);
-            this.createFeatureButton.Name = "createFeatureButton";
-            this.createFeatureButton.Size = new System.Drawing.Size(98, 23);
-            this.createFeatureButton.TabIndex = 2;
-            this.createFeatureButton.Text = "Create Feature";
-            this.createFeatureButton.UseVisualStyleBackColor = true;
-            this.createFeatureButton.Click += new System.EventHandler(this.createFeatureButton_Click);
+            this.modifyFeatureButton.Location = new System.Drawing.Point(403, 118);
+            this.modifyFeatureButton.Name = "modifyFeatureButton";
+            this.modifyFeatureButton.Size = new System.Drawing.Size(98, 23);
+            this.modifyFeatureButton.TabIndex = 2;
+            this.modifyFeatureButton.Text = "Modify Feature";
+            this.modifyFeatureButton.UseVisualStyleBackColor = true;
+            this.modifyFeatureButton.Click += new System.EventHandler(this.modifyFeatureButton_Click);
             // 
             // cancelButton
             // 
@@ -70,18 +70,18 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // FormCreateFeature
+            // FormModifyFeature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 176);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.createFeatureButton);
+            this.Controls.Add(this.modifyFeatureButton);
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.featureTitleLabel);
-            this.Name = "FormCreateFeature";
-            this.Text = "Create Feature";
-            this.Load += new System.EventHandler(this.FormCreateFeature_Load);
+            this.Name = "FormModifyFeature";
+            this.Text = "Modify Feature";
+            this.Load += new System.EventHandler(this.FormModifyFeature_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,7 +91,7 @@
 
         private System.Windows.Forms.Label featureTitleLabel;
         private System.Windows.Forms.TextBox titleTextBox;
-        private System.Windows.Forms.Button createFeatureButton;
+        private System.Windows.Forms.Button modifyFeatureButton;
         private System.Windows.Forms.Button cancelButton;
     }
 }

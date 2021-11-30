@@ -77,34 +77,53 @@ namespace P5
             if (featureToModify == -1)
                 return NOT_FOUND_ERROR;
 
-            features.RemoveAt(featureToModify);
             if (GetFeatureByTitle(feature.ProjectId, feature.Title) != null)
                 return DUPLICATE_TITLE_ERROR;
             if (string.IsNullOrEmpty(feature.Title))
                 return EMPTY_TITLE_ERROR;
-
+            features.RemoveAt(featureToModify);
             features.Add(feature);
             return NO_ERROR;
         }
         public Feature GetFeatureById(int projectId, int featureId)
         {
             List<Feature> searchList = new List<Feature>();
+            Feature returnFeat = new Feature();
             searchList = GetAll(projectId);
 
             var featureToReturn = features.FindIndex(r => r.Id == featureId);
 
-            return features[featureToReturn];
+            if (featureToReturn != -1)
+            {
+                returnFeat.Id = features[featureToReturn].Id;
+                returnFeat.ProjectId = features[featureToReturn].ProjectId;
+                returnFeat.Title = features[featureToReturn].Title;
+                return returnFeat;
+            }
+            else
+            {
+                return null;
+            }
+                
         }
         public Feature GetFeatureByTitle(int projectId, string title)
         {
             List<Feature> searchList = new List<Feature>();
+            Feature returnFeat = new Feature();
             searchList = GetAll(projectId);
 
             var featureToReturn = searchList.FindIndex(r => r.Title == title);
             if (featureToReturn != -1)
-                return features[featureToReturn];
+            {
+                returnFeat.Id = features[featureToReturn].Id;
+                returnFeat.ProjectId = features[featureToReturn].ProjectId;
+                returnFeat.Title = features[featureToReturn].Title;
+                return returnFeat;
+            }
             else
+            {
                 return null;
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace P5
 {
     public class Feature
     {
-        public int Id;
+        public int Id { get; set; }
         public int ProjectId;
-        public string Title;
+        public string Title { get; set; }
     }
 }
