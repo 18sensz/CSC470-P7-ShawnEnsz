@@ -115,6 +115,7 @@
     <Compile Include="FormModifyProject.Designer.cs">
       <DependentUpon>FormModifyProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="IRequirementRepository.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="IssueStatus.cs" />
     <Compile Include="Preference.cs" />
