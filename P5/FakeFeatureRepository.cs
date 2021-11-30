@@ -16,6 +16,31 @@ namespace P5
 
         private static List<Feature> features = new List<Feature>();
 
+        public FakeFeatureRepository()
+        {
+            if(features.Count < 1)
+            {
+                features.Add(
+                    new Feature()
+                    {
+                        Id = 1,
+                        ProjectId = 1,
+                        Title = "Default Feature"
+                        
+                    }
+                );
+
+                features.Add(
+                    new Feature()
+                    {
+                        Id = 2,
+                        ProjectId = 1,
+                        Title = "Second Feature"
+
+                    }
+                );
+            }
+        }
 
         public string Add(Feature feature)
         {
