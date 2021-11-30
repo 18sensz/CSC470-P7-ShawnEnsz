@@ -12,16 +12,42 @@ namespace P5
         public string DUPLICATE_STATEMENT_ERROR = "Statements must be unique.";
         public string EMPTY_STATEMENT_ERROR = "Statements must have a value.";
         public string REQUIREMENT_NOT_FOUND_ERROR = "Requirement does not exist.";
-        public string MISSING_FEATUREID_ERROR = "Must select a requirement for this requirement.";
+        public string MISSING_FEATUREID_ERROR = "Must select a feature for this requirement.";
         public string MISSING_PROJECTID_ERROR = "Must select a project for this requirement.";
 
         private static List<Requirement> requirements = new List<Requirement>();
-
+        public FakeRequirementRepository()
+        {
+            if (requirements.Count == 0)
+            {
+                // Populate some temporary values to work with
+                Add(new Requirement { 
+                    FeatureId = 1,
+                    Id = 1,
+                    ProjectId = 1,
+                    Statement = "This is a test statement."
+                });
+                Add(new Requirement
+                {
+                    FeatureId = 1,
+                    Id = 2,
+                    ProjectId = 1,
+                    Statement = "This another statement."
+                });
+                Add(new Requirement
+                {
+                    FeatureId = 2,
+                    Id = 3,
+                    ProjectId = 1,
+                    Statement = "This is a statement."
+                });
+            }
+        }
         public string Add(Requirement requirement)
         {
-            if (requirement.FeatureId > 0)
+            if (requirement.FeatureId < 1)
                 return MISSING_FEATUREID_ERROR;
-            if (requirement.ProjectId > 0)
+            if (requirement.ProjectId < 1)
                 return MISSING_PROJECTID_ERROR;
             if (GetAll(requirement.ProjectId).FindIndex(r => r.Statement == requirement.Statement) != -1)
                 return DUPLICATE_STATEMENT_ERROR;
@@ -68,11 +94,24 @@ namespace P5
         public Requirement GetRequirementById(int projectId, int requirementId)
         {
             List<Requirement> searchList = new List<Requirement>();
+            Requirement returnReq = new Requirement();
             searchList = GetAll(projectId);
 
             var requirementToReturn = searchList.FindIndex(r => r.Id == requirementId);
 
-            return requirements[requirementToReturn];
+            if(requirementToReturn != -1)
+            {
+                returnReq.Id = requirements[requirementToReturn].Id;
+                returnReq.ProjectId = requirements[requirementToReturn].ProjectId;
+                returnReq.FeatureId = requirements[requirementToReturn].FeatureId;
+                returnReq.Statement = requirements[requirementToReturn].Statement;
+                return returnReq;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
         public int CountByFeatureId(int featureId)
         {

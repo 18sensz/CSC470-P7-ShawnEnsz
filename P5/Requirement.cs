@@ -8,9 +8,9 @@ namespace P5
 {
     public class Requirement
     {
-        public int Id;
-        public int ProjectId;
-        public int FeatureId;
-        public string Statement;
+        public int Id { get; set; }
+        public int ProjectId{ get; set; }
+        public int FeatureId { get; set; }
+        public string Statement { get; set; }
     }
 }

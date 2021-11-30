@@ -74,6 +74,12 @@
     <Compile Include="FormCreateFeature.Designer.cs">
       <DependentUpon>FormCreateFeature.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCreateRequirement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreateRequirement.Designer.cs">
+      <DependentUpon>FormCreateRequirement.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDashboardIssue.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <Compile Include="Requirement.cs" />
     <EmbeddedResource Include="FormCreateFeature.resx">
       <DependentUpon>FormCreateFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreateRequirement.resx">
+      <DependentUpon>FormCreateRequirement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
