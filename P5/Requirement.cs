@@ -9,8 +9,8 @@ namespace P5
     public class Requirement
     {
         public int Id { get; set; }
-        public int ProjectId{ get; set; }
-        public int FeatureId { get; set; }
+        public int ProjectId = -1;
+        public int FeatureId = -1;
         public string Statement { get; set; }
     }
 }

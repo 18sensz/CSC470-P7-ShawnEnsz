@@ -49,7 +49,7 @@ namespace P5
                 return MISSING_FEATUREID_ERROR;
             if (requirement.ProjectId < 1)
                 return MISSING_PROJECTID_ERROR;
-            if (GetAll(requirement.ProjectId).FindIndex(r => r.Statement == requirement.Statement) != -1)
+            if (GetAll(requirement.ProjectId, requirement.FeatureId).FindIndex(r => r.Statement == requirement.Statement) != -1)
                 return DUPLICATE_STATEMENT_ERROR;
             if (string.IsNullOrEmpty(requirement.Statement))
                 return EMPTY_STATEMENT_ERROR;
@@ -58,12 +58,12 @@ namespace P5
             requirements.Add(requirement);
             return NO_ERROR;
         }
-        public List<Requirement> GetAll(int projectId)
+        public List<Requirement> GetAll(int projectId, int featureId)
         {
             List<Requirement> returnList = new List<Requirement>();
             foreach (Requirement requirement in requirements)
             {
-                if (requirement.ProjectId == projectId)
+                if (requirement.ProjectId == projectId && requirement.FeatureId == featureId)
                     returnList.Add(requirement);
             }
             return returnList;
@@ -82,12 +82,12 @@ namespace P5
             if (requirementToModify == -1)
                 return REQUIREMENT_NOT_FOUND_ERROR;
 
-            requirements.RemoveAt(requirementToModify);
-            if (GetAll(requirement.ProjectId).FindIndex(r => r.Statement == requirement.Statement) != -1)
+            
+            if (GetAll(requirement.ProjectId, requirement.FeatureId).FindIndex(r => r.Statement == requirement.Statement) != -1)
                 return DUPLICATE_STATEMENT_ERROR;
             if (string.IsNullOrEmpty(requirement.Statement))
                 return EMPTY_STATEMENT_ERROR;
-
+            requirements.RemoveAt(requirementToModify);
             requirements.Add(requirement);
             return NO_ERROR;
         }
@@ -95,7 +95,11 @@ namespace P5
         {
             List<Requirement> searchList = new List<Requirement>();
             Requirement returnReq = new Requirement();
-            searchList = GetAll(projectId);
+            foreach (Requirement requirement in requirements)
+            {
+                if (requirement.ProjectId == projectId)
+                    searchList.Add(requirement);
+            }
 
             var requirementToReturn = searchList.FindIndex(r => r.Id == requirementId);
 

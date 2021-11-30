@@ -43,7 +43,7 @@ namespace P5
             }
             else
             {
-                MessageBox.Show("A Issue must be selected and Cannot select more than ONE issue.", "Attention");
+                MessageBox.Show("A Feature must be selected.", "Attention");
             }
         }
     }

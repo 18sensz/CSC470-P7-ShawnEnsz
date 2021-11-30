@@ -9,7 +9,7 @@ namespace P5
     public interface IRequirementRepository
     {
         string Add(Requirement requirement);
-        List<Requirement> GetAll(int projectId);
+        List<Requirement> GetAll(int projectId, int featureId);
         string Remove(Requirement requirement);
         string Modify(Requirement requirement);
         Requirement GetRequirementById(int projectId, int requirementId);

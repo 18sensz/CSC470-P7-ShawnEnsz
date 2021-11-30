@@ -218,5 +218,21 @@ namespace P5
             form.Dispose();
 
         }
+
+        private void modifyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormSelectRequirement form = new FormSelectRequirement(_CurrentAppUser);
+            form.ShowDialog();
+            var selectedRequirement = form.selectedRequirementId;
+
+            if(form.DialogResult == DialogResult.OK)
+            {
+                FormModifyRequirement form2 = new FormModifyRequirement(_CurrentAppUser, selectedRequirement);
+                form2.ShowDialog();
+                form2.Dispose();
+            }
+
+            form.Dispose();
+        }
     }
 }
