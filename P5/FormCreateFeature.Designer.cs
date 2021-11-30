@@ -1,4 +1,4 @@
-﻿namespace Builder
+﻿namespace P5
 {
     partial class FormCreateFeature
     {
@@ -52,7 +52,6 @@
             // 
             // createFeatureButton
             // 
-            this.createFeatureButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.createFeatureButton.Location = new System.Drawing.Point(403, 118);
             this.createFeatureButton.Name = "createFeatureButton";
             this.createFeatureButton.Size = new System.Drawing.Size(98, 23);

@@ -144,7 +144,9 @@ namespace P5
         //Feature Create
         private void createToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-
+            FormCreateFeature form = new FormCreateFeature(_CurrentAppUser);
+            form.ShowDialog();
+            form.Dispose();
         }
     }
 }

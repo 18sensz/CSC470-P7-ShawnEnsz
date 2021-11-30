@@ -101,8 +101,10 @@ namespace P5
             searchList = GetAll(projectId);
 
             var featureToReturn = searchList.FindIndex(r => r.Title == title);
-
-            return features[featureToReturn];
+            if (featureToReturn != -1)
+                return features[featureToReturn];
+            else
+                return null;
         }
     }
 }
