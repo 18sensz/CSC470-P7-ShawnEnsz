@@ -66,6 +66,7 @@
     <Compile Include="FakeIssueStatusRepository.cs" />
     <Compile Include="FakePreferenceRepository.cs" />
     <Compile Include="FakeProjectRepository.cs" />
+    <Compile Include="FakeRequirementRepository.cs" />
     <Compile Include="Feature.cs" />
     <Compile Include="FormDashboardIssue.cs">
       <SubType>Form</SubType>

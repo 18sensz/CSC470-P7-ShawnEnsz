@@ -100,7 +100,7 @@ namespace P5
             List<Feature> searchList = new List<Feature>();
             searchList = GetAll(projectId);
 
-            var featureToReturn = features.FindIndex(r => r.Title == title);
+            var featureToReturn = searchList.FindIndex(r => r.Title == title);
 
             return features[featureToReturn];
         }

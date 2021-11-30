@@ -13,7 +13,7 @@ namespace P5
         string Remove(Requirement requirement);
         string Modify(Requirement requirement);
         Requirement GetRequirementById(int projectId, int requirementId);
-        int CountByFeature(int featureId);
+        int CountByFeatureId(int featureId);
         void RemoveByFeatureId(int featureId);
     }
 }
