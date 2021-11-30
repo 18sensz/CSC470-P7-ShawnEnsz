@@ -198,7 +198,7 @@ namespace P5
                     }
                     else
                     {
-                        fakeRequirementRepository.RemoveByFeatureId(selectedFeatureId);
+                        //fakeRequirementRepository.RemoveByFeatureId(selectedFeatureId);
                         fakeFeatureRepository.Remove(fakeFeatureRepository.GetFeatureById(selectedProjectId, selectedFeatureId));
                     }
                 }
@@ -232,6 +232,31 @@ namespace P5
                 form2.Dispose();
             }
 
+            form.Dispose();
+        }
+
+        private void removeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FakeRequirementRepository fakeRequirementRepository = new FakeRequirementRepository();
+            FakeFeatureRepository fakeFeatureRepository = new FakeFeatureRepository();
+            FormSelectRequirement form = new FormSelectRequirement(_CurrentAppUser);
+            FakePreferenceRepository fakePreferenceRepository = new FakePreferenceRepository();
+            var selectedProjectId = Int32.Parse(fakePreferenceRepository.GetPreference(_CurrentAppUser.UserName, FakePreferenceRepository.PREFERENCE_PROJECT_ID));
+            form.ShowDialog();
+            var selectedRequirementId = form.selectedRequirementId;
+
+            if (form.DialogResult == DialogResult.OK)
+            {
+                var result = MessageBox.Show($"Are you sure you want to remove: {fakeRequirementRepository.GetRequirementById(selectedProjectId, selectedRequirementId).Statement}?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    fakeRequirementRepository.Remove(fakeRequirementRepository.GetRequirementById(selectedProjectId, selectedRequirementId));
+                }
+                else
+                {
+                    MessageBox.Show("Remove canceled!", "Attention");
+                }
+            }
             form.Dispose();
         }
     }

@@ -129,10 +129,11 @@ namespace P5
         }
         public void RemoveByFeatureId(int featureId)
         {
-            foreach (Requirement requirement in requirements)
+            List<Requirement> reqs = new List<Requirement>();
+            reqs = requirements.Where(r => r.FeatureId == featureId).ToList();
+            foreach (Requirement requirement in reqs)
             {
-                if (requirement.FeatureId == featureId)
-                    Remove(requirement);
+                Remove(requirement);
             }
         }
     }

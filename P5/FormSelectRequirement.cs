@@ -54,6 +54,7 @@ namespace P5
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.selectButton.Enabled = true;
             this.dataGridView1.DataSource = fakeRequirementRepository.GetAll(selectedProjectId, fakeFeatureRepository.GetFeatureByTitle(selectedProjectId, this.comboBox1.SelectedItem.ToString()).Id);
         }
     }
